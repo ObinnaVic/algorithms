@@ -1034,3 +1034,141 @@ console.log(newList.print());
 console.log(newList.peek());
 
 
+//USING THE LINK LIST TO IMPLEMENT THE QUEUE METHOD(FIRST IN, FIRST OUT);
+
+class LinkedListQueue {
+    constructor() {
+        this.list = new ListTwo;
+    }
+
+    enqueue(value) {
+        return this.list.append(value);
+    }
+
+    dequeue() {
+        return this.list.removeFront();
+    }
+
+    peek() {
+        return this.list.tail.value;
+    }
+
+    isEmpty() {
+        return this.list.isEmpty();
+    }
+
+    getSize() {
+        return this.list.getSize();
+    }
+
+    print() {
+        return this.list.print();
+    }
+
+}
+
+let newQueue = new LinkedListQueue;
+
+console.log(newQueue.isEmpty());
+console.log(newQueue.getSize());
+
+newQueue.enqueue(10)
+newQueue.enqueue(20)
+newQueue.enqueue(30)
+
+console.log(newQueue.getSize());
+console.log(newQueue.print());
+
+newQueue.dequeue()
+
+console.log(newQueue.print());
+
+console.log(newQueue.peek());
+
+
+//HASH TABLE DATA STRUCTURE
+//This is also know as hash map. This is a data structure that is used to store key-value pairs just the way we have it in 
+//javascript object and map. The key-value pairs are stored in fixed size array using a HASHING FUNCTION.
+
+class Hash {
+    constructor(size) {
+        this.table = new Array(size);
+        this.size = size;
+    }
+
+    hashFunction(key) {
+        let total = 0;
+        for (let i = 0; i < key.length; i++) {
+            total += key.charCodeAt(i);
+        }
+
+        return total % this.size;
+    }
+
+    set(key, value) {
+        let index = this.hashFunction(key);
+        // this.table[index] = value; 
+        //The following code is used to solve the issue of hash table collusion of keys.
+        let bucket = this.table[index];
+        if (!bucket) {
+            this.table[index] = [[key, value]]
+        } else {
+            let sameKeyItem = bucket.find((item) => item[0] === key);
+            if (sameKeyItem) {
+                sameKeyItem[1] = value;
+            } else {
+                bucket.push([key, value]);
+            }
+        }
+    }
+
+    get(key) {
+        let index = this.hashFunction(key);
+        // return this.table[index];
+        //The following code is used to solve the issue of hash table collusion of keys.
+        let bucket = this.table[index];
+        if (bucket) {
+            let sameKeyItem = bucket.find((item) => item[0] === key);
+            if (sameKeyItem) {
+                return sameKeyItem[1];
+            }
+        }
+        return null;
+    }
+
+    remove(key) {
+        let index = this.hashFunction(key);
+        // this.table[index] = undefined;
+        //The following code is used to solve the issue of hash table collusion of keys.
+        let bucket = this.table[index];
+        if (bucket) {
+            let sameKeyItem = bucket.find((item) => item[0] === key);
+            if (sameKeyItem) {
+                bucket.splice(bucket.indexOf(sameKeyItem), 1);
+            }
+        }
+    }
+
+    display() {
+        let item = "";
+        for (let i = 0; i < this.table.length; i++) {
+            if (this.table[i]) {
+                item += `${i}, [${this.table[i]}] `
+            }
+        }
+        return item;
+    }
+}
+
+const newHash = new Hash(10);
+
+newHash.set(2, "Victor");
+newHash.set("name", "Nkire");
+
+console.log(newHash.display());
+
+newHash.remove(2);
+
+console.log(newHash.display());
+
+
