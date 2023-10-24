@@ -1172,3 +1172,96 @@ newHash.remove(2);
 console.log(newHash.display());
 
 
+
+///TREE DATA STRUCTURE: This is a hierarchical data structure that consists of nodes connected by edges.
+
+//BINARY SEARCH TREE: This is a tree data structure in which each nodes has at most two children. They are referred to as 
+//the left child and the right child.
+
+//The left child must be lesser than the Parent child.
+// The Right Child must be greater than the Parent child.
+
+class TreeNode { //The class for each Node instance that will be added to the tree.
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinarySearchTree { 
+    constructor() {
+        this.root = null;
+    }
+
+    isEmpty() {
+        return this.root === null;
+    }
+
+    insert(value) {
+        let newNode = new TreeNode(value);
+        if (this.isEmpty()) {
+            this.root = newNode;
+        } else {
+            this.checkExistingNode(this.root, newNode); //function to check the existing nodes.
+        }
+    }
+
+    checkExistingNode(root, newNode) {
+        if (newNode.value < root.value) { //if newNode.value is less than root.value, we focus on the left side as the left node must be less than Parent node.
+            if (root.left === null) { //Check if there is already a left node not.
+                root.left = newNode;
+            } else {
+                this.checkExistingNode(root.left, newNode); //If there is a left node, check the node's children.  
+            }
+        } else {
+            if (root.right === null) { //if newNode.value is greater than root.value, we focus on the right side as the right node must be greater than Parent node.
+                root.right = newNode;
+            } else {
+                this.checkExistingNode(root.right, newNode); //If there is a right node, check the node's children.
+            }
+        }
+    }
+
+
+    search(root, value) {
+        if (!root) {
+            return false;
+        } else {
+            if (root.value === value) {
+                return true;
+            } else if (value < root.value) {
+                return this.search(root.left, value);
+            } else {
+                return this.search(root.right, value);
+            }
+        }
+    }
+
+    preOrder(root) {
+        if (root) {
+            console.log(root.value);
+            this.preOrder(root.left);
+            this.preOrder(root.right);
+        }
+    }
+}
+
+const bst = new BinarySearchTree();
+
+console.log(bst.isEmpty());
+
+bst.insert(10);
+bst.insert(20);
+bst.insert(5);
+bst.insert(4);
+bst.insert(30);
+
+console.log(bst.isEmpty());
+
+console.log(bst.search(bst.root, 30));
+
+bst.preOrder(bst.root);
+
+
+
