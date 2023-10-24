@@ -998,6 +998,10 @@ class LinkedListStack {
         return this.list.removeBack();
     }
 
+    peek() {
+        return this.list.head.value;
+    }
+
     isEmpty() {
         return this.list.isEmpty();
     }
@@ -1026,5 +1030,7 @@ console.log(newList.print());
 newList.pop()
 
 console.log(newList.print());
+
+console.log(newList.peek());
 
 
