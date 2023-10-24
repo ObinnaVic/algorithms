@@ -864,6 +864,167 @@ console.log(myList.print());
 
 
 
+///Linked list with a Head and tail pointer
 
+class NodeTwo {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class ListTwo {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    prepend(value) { //This is to add a new node to the beginning of the list using the head and tail pointers
+        const node = new NodeTwo(value);
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
+        this.size++
+    }
+
+    append(value) { //This is to add a new node to the end of the list using the tail and head pointers.
+        const node = new Node(value);
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.size++;
+
+    }
+
+    removeFront() {
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            let value = this.head.value;
+            this.head = this.head.next;
+            this.size--;
+            return value;
+        }
+    }
+
+    removeBack() {
+         if (this.isEmpty()) {
+            return null;
+         }
+         let value = this.tail.value;
+         if (this.size == 1) {
+            this.tail = null;
+            this.head = null;
+         } else {
+            let prev = this.head;
+            while (prev.next !== this.tail) {
+                prev = prev.next;
+            }
+            prev.next = null;
+            this.tail = prev;
+         }
+         this.size--;
+         return value;
+    }
+
+    print() {
+        let next = this.head;
+        let listValue = ""
+        while (next) {
+            listValue+= `${next.value} `;
+            next = next.next;
+        }
+
+        return listValue
+    }
+}
+
+const list2 = new ListTwo;
+
+console.log(list2.isEmpty());
+console.log(list2.getSize());
+
+list2.prepend(10)
+list2.prepend(20)
+list2.prepend(30)
+
+console.log(list2.getSize());
+
+console.log(list2.print());
+
+list2.append(40)
+list2.append(50)
+list2.append(60)
+
+console.log(list2.print());
+
+list2.removeFront()
+console.log(list2.print());
+
+list2.removeBack();
+console.log(list2.print());
+
+
+
+//USING THE LINK LIST TO IMPLEMENT THE STACK METHOD(LAST IN, FIRST OUT);
+
+class LinkedListStack {
+    constructor() {
+        this.list = new ListTwo;
+    }
+
+    push(value) {
+        return this.list.prepend(value);
+    }
+
+    pop() {
+        return this.list.removeBack();
+    }
+
+    isEmpty() {
+        return this.list.isEmpty();
+    }
+
+    getSize() {
+        return this.list.getSize();
+    }
+
+    print() {
+        return this.list.print();
+    }
+}
+
+let newList = new LinkedListStack;
+
+console.log(newList.isEmpty());
+console.log(newList.getSize());
+
+newList.push(10)
+newList.push(20)
+newList.push(30);
+
+console.log(newList.getSize());
+console.log(newList.print());
+
+newList.pop()
+
+console.log(newList.print());
 
 
