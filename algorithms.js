@@ -642,3 +642,228 @@ console.log(circularQueue.print());
 circularQueue.enqueue(60);
 console.log(circularQueue.print());
 console.log(circularQueue.size());
+
+
+///LINKED LIST
+//This is a linear data structure that includes a series of connected nodes. Each node consists of a data value and a 
+//pointer that points to the next node.
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+
+class List {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }   
+
+  isEmpty() {
+    return this.size == 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  prepend(value) { //Add a new node to the start of the linked list
+    const node = new Node(value);
+    if (this.isEmpty()) {
+        this.head = node;
+    } else {
+        node.next = this.head;
+        this.head = node;
+    }
+
+    this.size++;
+  }
+
+  append(value) { //Add a new node to the end of the linked list.
+    const node = new Node(value);
+
+    if (this.isEmpty()) {
+        this.head = node;
+    } else {
+        let prev = this.head;
+        while (prev.next) {
+            prev = prev.next;
+        } 
+        prev.next = node;
+    }
+    this.size++;
+  }
+
+  insert(value, index) { //To insert a node at a particular index of the list.
+    if (index < 0 || index > this.size) { //checks if the index passed is invalid. That is, if it is less than 0 ir greater than size.
+         return;
+    }
+
+    if (index == 0) { //ckecks if the index is equal to 0.
+        this.prepend(value);
+    }
+
+    if (index > 0) { //checks if the index passed is greater than 0.
+        const node = new Node(value);
+        let prev = this.head;
+        for (let i = 0; i < index - 1; i++) {
+            prev = prev.next;
+        }
+        node.next = prev.next;
+        prev.next = node;
+        this.size++;
+    }
+  }
+
+  removeFrom(index) { //Removes the node at a particular index from the linked list.
+    if (index < 0 || index >= this.size) {
+        return;
+    }
+
+    let removedNode;
+
+    if (index == 0) {
+        removedNode = this.head;
+        this.head = this.head.next;
+    } 
+
+    if (index > 0) {
+        let prev = this.head;
+        for (let i = 0; i < index - 1; i++) {
+            prev = prev.next;
+        }
+
+        removedNode = prev.next;
+        prev.next = removedNode.next;
+    }
+    this.size--;
+    return removedNode.value;
+
+  }
+
+
+  removeValue(value) { //This is to remove a node whose value is equal to the value that is being passed.
+    if (this.isEmpty()) {
+        return;
+    }
+
+    let removedNode;
+
+    if (value == this.head.value) {
+        this.head = this.head.next;
+        this.size--
+        return value;
+    } else {
+        let prev = this.head;
+        while (prev.next && prev.next.value !== value) {
+            prev = prev.next;
+        }
+
+        if (prev.next) {
+            removedNode = prev.next;
+            prev.next = removedNode.next;
+            this.size--
+            return value;
+        }
+        return null;
+    }
+
+  }
+
+
+  reverse() { //This is to reverse the order of the linked list.
+    let prev = null;
+    let curr = this.head;
+    while (curr) {
+        let next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    this.head = prev;
+  }
+
+
+  search(value) { //Search for a node whose value is equal to the value that is being passed and return the index of the node, else return -1 if not found. 
+    if (this.isEmpty()) {
+        return -1;
+    }
+
+    if (value == this.head.value) {
+        return 0;
+    } else {
+        let i = 0
+        let curr = this.head;
+        while (curr) {
+            if (curr.value == value) {
+                return i;
+            }
+            curr = curr.next;
+            i++;
+        }
+        return -1;
+    }
+  }
+
+
+  print() { //Get all nodes values from the list
+    if (this.isEmpty()) {
+        console.log("List is Empty");
+    } else {
+        let curr = this.head;
+        let listValue = "";
+        while (curr) {
+            listValue += `${curr.value} `;
+            curr = curr.next;
+        }
+        return listValue;
+    }
+  }
+}
+
+const myList = new List;
+
+console.log(myList.isEmpty());
+console.log(myList.getSize());
+
+myList.prepend(10);
+myList.prepend(20);
+myList.prepend(30);
+myList.prepend(40);
+myList.prepend(50);
+
+console.log(myList.print());
+console.log(myList.getSize());
+
+myList.append(5);
+
+console.log(myList.print());
+
+myList.insert(70, 2);
+
+console.log(myList.print());
+
+console.log(myList.removeFrom(3));
+
+console.log(myList.print());
+
+console.log(myList.getSize());
+
+console.log(myList.removeValue(70));
+
+console.log(myList.print());
+
+console.log(myList.search(40));
+
+myList.reverse();
+
+console.log(myList.print());
+
+
+
+
+
+
