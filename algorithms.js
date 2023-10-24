@@ -1245,6 +1245,22 @@ class BinarySearchTree {
             this.preOrder(root.right);
         }
     }
+
+    inOrder(root) {
+        if (root) {
+            this.inOrder(root.left);
+            console.log(root.value);
+            this.inOrder(root.right);
+        }
+    }
+
+    postOrder(root) {
+        if (root) {
+            this.postOrder(root.left);
+            this.postOrder(root.right);
+            console.log(root.value);
+        }
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -1262,6 +1278,8 @@ console.log(bst.isEmpty());
 console.log(bst.search(bst.root, 30));
 
 bst.preOrder(bst.root);
+bst.inOrder(bst.root);
+bst.postOrder(bst.root);
 
 
 
