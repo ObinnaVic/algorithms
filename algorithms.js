@@ -1238,6 +1238,10 @@ class BinarySearchTree {
         }
     }
 
+
+    //DFS(DEPTH FIRST SEARCH): This is used to traverse and print out all the elements 
+    //of a tree by traversing the left children, then backtracking and traversing the 
+    // right children of each subroot.
     preOrder(root) {
         if (root) {
             console.log(root.value);
@@ -1261,6 +1265,26 @@ class BinarySearchTree {
             console.log(root.value);
         }
     }
+
+    //BFS(BREADTH FIRST SEARCH): This is also a method of traversing through the tree
+    //and printing out all the values of each level of the tree.
+    levelsearch() {
+        const queue = [];
+        const result = []
+        queue.push(this.root);
+        while (queue.length) {
+            let curr = queue.shift();
+            result.push(curr.value);
+            if (curr.left) {
+                queue.push(curr.left);
+            }
+            if (curr.right) {
+                queue.push(curr.right);
+            }
+        }
+        console.log(result);
+        return result;
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -1280,6 +1304,8 @@ console.log(bst.search(bst.root, 30));
 bst.preOrder(bst.root);
 bst.inOrder(bst.root);
 bst.postOrder(bst.root);
+
+console.log(bst.levelsearch());
 
 
 
