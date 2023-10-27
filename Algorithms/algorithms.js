@@ -1,3 +1,19 @@
+<div align="center">
+  <h1> Data Structures and Algorithms </h1>
+  <a class="header-badge" target="_blank" href="https://www.linkedin.com/in/victor-n77/">
+  <img src="https://img.shields.io/badge/style--5eba00.svg?label=LinkedIn&logo=linkedin&style=social">
+  </a>
+  <a class="header-badge" target="_blank" href="https://twitter.com/NkireVictor">
+  <img alt="Twitter Follow" src="https://twitter.com/NkireVictor">
+  </a>
+
+  <sub>Author:
+  <a href="https://www.linkedin.com/in/victor-n77/" target="_blank">Victor Nkire</a><br>
+  <small> October, 2023</small>
+  </sub>
+</div>
+
+
 //-------------------------------------------------------ALGORITHMS-----------------------------------------------------
 
 // An Algorithm is a set of well-defined instructions to solve a particular problem.
