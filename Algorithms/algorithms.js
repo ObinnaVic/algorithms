@@ -1,33 +1,59 @@
 //-------------------------------------------------------ALGORITHMS-----------------------------------------------------
 
-// An Algorithm is a set of well-defined instructions to solve a particular problem.
+//An Algorithm is a set of well-defined instructions to solve a particular problem.
 
-// INPUT ---------> ALGORITHM --------> OUTPUT
+//INPUT ---------> ALGORITHM --------> OUTPUT
 
 //Characteristics of Algorithms
 
-//1) Well defined inputs and Outputs
-//2) Each step should be clear and unambiguous
-//3) Language independence
-
+// 1) Well defined inputs and Outputs
+// 2) Each step should be clear and unambiguous
+// 3) Language independence
 
 //------------------------------------------------------Time And Space Complexity----------------------------------------
 
-//1) Time Complexity: This is the amount of time taken by an algorithm to run
-//2) Space Complexity: This is the amount of memory taken by an algorithm to run
+// 1) Time Complexity: This is the amount of time taken by an algorithm to run
+// 2) Space Complexity: This is the amount of memory taken by an algorithm to run
 
 //------------Asymptotic notation---------------: 
-// This is a mathematical tool to represent time and space complexity. It includes:
+//This is a mathematical tool to represent time and space complexity. It includes:
 
-//1) BIG-O NOTATION (O-notation): This signifies the worst case complexities.
-//2) OMEGA NOTATION : This signifies the best case complexities.
-//3) THETA NOTATION : This signifies the Average case complexities.
+// 1) BIG-O NOTATION (O-notation): This signifies the worst case complexities This is expressed in terms of the INPUT.
+// 2) OMEGA NOTATION : This signifies the best case complexities.
+// 3) THETA NOTATION : This signifies the Average case complexities.
 
 function summation(n) {
     return (n * (n - 1))/2
 }
 
-console.log(summation(5));
+//Now lets look at Big-O notation in relation to Time complexity in Javascript.
+  
+// 1) O(1) : This is the CONSTANT TIME COMPLEXITY. This means that irrespective of the input size, the code or algorithm runs only once. For instance;
+
+function summations(n) { //This is a function that gets the output of the addition of all numbers from 0 - n
+
+    return (n * (n - 1)) / 2 //------- O(1) This is a constant time complexity because the code runs once irrespective of the input value.
+
+}
+
+summation(5) // 10
+
+
+// 2) O(n) : This is the LINEAR TIME COMPLEXITY. This implies that as the Input size of the function increases, the time complexity also increases.
+
+//Big-O notation illustration:
+function sum(n) { //IF n = 4
+  let num = 0; //------------------------1 
+  for(let i=0; i<= n; i++) {
+    sum += i; //-------------------------4
+  }
+  return sum;//--------------------------1
+}
+
+//In the above code, n decides how many times the for loop runs, therefore 
+
+sum(4);/// In this instance, we will call the function passing in the input 4;
+
  
 //FINACCI SEQUENCE
 
