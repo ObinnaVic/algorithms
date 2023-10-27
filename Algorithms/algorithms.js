@@ -1,43 +1,50 @@
-<div align="center">
-  <h1> Data Structures and Algorithms </h1>
-  <a class="header-badge" target="_blank" href="https://www.linkedin.com/in/victor-n77/">
-  <img src="https://img.shields.io/badge/style--5eba00.svg?label=LinkedIn&logo=linkedin&style=social">
-  </a>
-  <a class="header-badge" target="_blank" href="https://twitter.com/NkireVictor">
-  <img alt="Twitter Follow" src="https://twitter.com/NkireVictor">
-  </a>
+//-------------------------------------------------------ALGORITHMS-----------------------------------------------------
 
-  <sub>Author:
-  <a href="https://www.linkedin.com/in/victor-n77/" target="_blank">Victor Nkire</a><br>
-  <small> October, 2023</small>
-  </sub>
-</div>
+//An Algorithm is a set of well-defined instructions to solve a particular problem.
+
+//INPUT ---------> ALGORITHM --------> OUTPUT
+
+//Characteristics of Algorithms
+
+// 1) Well defined inputs and Outputs
+// 2) Each step should be clear and unambiguous
+// 3) Language independence
+
+//------------------------------------------------------Time And Space Complexity----------------------------------------
+
+// 1) Time Complexity: This is the amount of time taken by an algorithm to run
+// 2) Space Complexity: This is the amount of memory taken by an algorithm to run
+
+//------------Asymptotic notation---------------: 
+//This is a mathematical tool to represent time and space complexity. It includes:
+
+// 1) BIG-O NOTATION (O-notation): This signifies the worst case complexities This is expressed in terms of the INPUT.
+// 2) OMEGA NOTATION : This signifies the best case complexities.
+// 3) THETA NOTATION : This signifies the Average case complexities.
 
 
--------------------------------------------------------ALGORITHMS-----------------------------------------------------
+//Now lets look at Big-O notation in relation to Time complexity in Javascript.
+  
+// 1) O(1) : This is the CONSTANT TIME COMPLEXITY. This means that irrespective of the input size, the code or algorithm runs only once. For instance;
+  
+  function summation(n) { //This is a function that gets the output of the addition of all numbers from 0 - n
+    return (n * (n - 1)) / 2
+  }
 
-An Algorithm is a set of well-defined instructions to solve a particular problem.
+summation(5) // 10
 
-INPUT ---------> ALGORITHM --------> OUTPUT
+//Big-O notation illustration:
+function sum(n) { //IF n = 4
+  let num = 0; //------------------------1 
+  for(let i=0; i<= n; i++) {
+    sum += i; //-------------------------4
+  }
+  return sum;//--------------------------1
+}
 
-Characteristics of Algorithms
+//In the above code, n decides how many times the for loop runs, therefore 
 
-1) Well defined inputs and Outputs
-2) Each step should be clear and unambiguous
-3) Language independence
-
-------------------------------------------------------Time And Space Complexity----------------------------------------
-
-1) Time Complexity: This is the amount of time taken by an algorithm to run
-2) Space Complexity: This is the amount of memory taken by an algorithm to run
-
-------------Asymptotic notation---------------: 
-This is a mathematical tool to represent time and space complexity. It includes:
-
-1) BIG-O NOTATION (O-notation): This signifies the worst case complexities.
-2) OMEGA NOTATION : This signifies the best case complexities.
-3) THETA NOTATION : This signifies the Average case complexities.
-
+sum(4);/// In this instance, we will call the function passing in the input 4;
 
  
 //FINACCI SEQUENCE
