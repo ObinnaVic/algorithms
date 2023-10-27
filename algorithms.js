@@ -1285,6 +1285,74 @@ class BinarySearchTree {
         console.log(result);
         return result;
     }
+
+    //function to get the minimum value of the tree.
+    min(root) {
+        if (!root.left) {
+            return root.value;
+        } else {
+            return this.min(root.left);
+        }
+    }
+
+    //function to get the maximum value in the tree.
+    max(root) {
+        if (!root.right) {
+            return root.value;
+        } else {
+            return this.max(root.right);
+        }
+    }
+
+    //function to delete a node from the tree looking at 3 cases:
+    //If the node to delete is a leaf node
+    //If the node to delete has one child
+    //If the node to delete has two children: In this case, we will replace the node to delete
+    /////with the minimum value of right subtree of node to delete.
+
+    delete(value) {
+        this.root = this.deleteNode(this.root, value);
+    }
+
+    deleteNode(root, value) {
+        if (root === null) {
+            return root;
+        }
+
+        if (value < root.value) {
+
+            root.left = this.deleteNode(root.left, value);
+
+        } else if (value > root.value) {
+
+            root.right = this.deleteNode(root.right, value);
+        
+        } else {
+            
+            if (!root.left && !root.right) {
+
+                return null;
+            
+            } 
+            if (!root.left) {
+            
+                return root.right;
+            
+            } else if (!root.right) {
+            
+                return root.left;
+            
+            } 
+            
+            root.value = this.min(root.right);
+        
+            root.right = this.deleteNode(root.right, root.value)
+            
+            
+        }
+
+        return root;
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -1306,6 +1374,142 @@ bst.inOrder(bst.root);
 bst.postOrder(bst.root);
 
 console.log(bst.levelsearch());
+
+console.log(bst.min(bst.root));
+console.log(bst.max(bst.root));
+
+bst.delete(20);
+
+console.log(bst.levelsearch());
+
+
+
+///GRAPH DATA STRUCTURE: This is a non-linear data structure that consists of a finite number of vertexes(nodes) connected by edges.
+
+//Types of Graph data structure
+//1) Directed Graph: This is a type of graph inwhich the edges have a defined direction. The egdes are represented by 
+/////////////////////by arrows pointing in the direction the graph can be traversed.
+
+//2) Undirectional Graphs: This is a type of graph where the edges are bi-directional. This means that it is 
+///////////////////////////traversed in either direction.
+
+
+//Graphs can be represented in code in 2 ways:
+
+//1) Adjacency matrix: This is a 2D array of size V x V, where V is the number of vertexes in the graph. That is, imagine 3 vertexes A, B and C:
+// A is connected to B thereby B is connected to A, B is connected to C thereby C is connected to B in an undirectional graph. Illustrating this on a matrix as follows:
+
+//    A     B     C
+// --------------------
+// A |0     1     0
+// B |1     0     1
+// c |0     1     0
+
+//Using the matrix above, we can structure it using Javascript as shown below;
+
+const matrix = [
+    [0, 1, 0], 
+    [1, 0, 1], 
+    [0, 1, 0]
+] 
+
+console.log(matrix[0][1]); //This returns 1 when there is a connection between the vertexes and 0 when the vertexes are not connected.
+
+
+//2) Adjacency list: Here, vertexes are stored in a map-like data structure where every vertexes stores a list of its adjacent vertexes.
+//That is:
+
+// A => B;
+// B => A, C;
+// C => B
+
+//Illustrated in Javascript as follows:
+
+const adjacent_List = {
+    "A": ["B"],
+    "B": ["A","C"],
+    "C": ["B"]
+}
+
+console.log(adjacent_List["B"]); //This returns all the vertexes that are connected to B.
+
+//Illustration of the Adjacent List Graph:
+
+class Graph {
+    constructor() {
+        this.list = {}
+    }
+
+    addvertex(vertex) {
+        if (!this.list[vertex]) {
+            this.list[vertex] = new Set();   
+        }
+    }
+
+    addEdges(vertex1, vertex2) {
+        if (!this.list[vertex1]) {
+            this.addvertex(vertex1);
+        }
+        if (!this.list[vertex2]) {
+            this.addvertex(vertex2);
+        }
+
+        this.list[vertex1].add(vertex2);
+        this.list[vertex2].add(vertex1);
+    }
+
+    hasEdge(vertex1, vertex2) {
+        return (
+            this.list[vertex1].has(vertex2) &&
+            this.list[vertex2].has(vertex1)
+        );
+    }
+
+    viewList() {
+        let result = []
+        for (const vertex in this.list) {
+           result.push(vertex + " => " + [...this.list[vertex]])
+        }
+        return result
+    }
+
+    removeEdge(vertex1, vertex2) {
+        this.list[vertex1].delete(vertex2);
+        this.list[vertex2].delete(vertex1);
+    }
+
+    removeVertex(vertex) {
+        if (!this.list[vertex]) {
+            return;
+        } 
+        for (const adjacentVertex of this.list[vertex]) {
+            this.removeEdge(adjacentVertex, vertex);
+        }
+        delete this.list[vertex]
+    }
+}
+
+const graph = new Graph();
+
+graph.addvertex("A")
+graph.addvertex("B")
+graph.addvertex("C")
+
+graph.addEdges("A", "B");
+graph.addEdges("B", "C");
+
+console.log(graph.viewList());
+
+console.log(graph.hasEdge("A", "B"));
+console.log(graph.hasEdge("A", "C"));
+
+graph.removeEdge("A", "B");
+
+console.log(graph.viewList());
+
+graph.removeVertex("A");
+
+console.log(graph.viewList());
 
 
 
