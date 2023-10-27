@@ -23,7 +23,11 @@
 //2) OMEGA NOTATION : This signifies the best case complexities.
 //3) THETA NOTATION : This signifies the Average case complexities.
 
+function summation(n) {
+    return (n * (n - 1))/2
+}
 
+console.log(summation(5));
  
 //FINACCI SEQUENCE
 
