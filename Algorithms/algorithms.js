@@ -1,7 +1,30 @@
 //-------------------------------------------------------ALGORITHMS-----------------------------------------------------
 
+// An Algorithm is a set of well-defined instructions to solve a particular problem.
+
+// INPUT ---------> ALGORITHM --------> OUTPUT
+
+//Characteristics of Algorithms
+
+//1) Well defined inputs and Outputs
+//2) Each step should be clear and unambiguous
+//3) Language independence
 
 
+//------------------------------------------------------Time And Space Complexity----------------------------------------
+
+//1) Time Complexity: This is the amount of time taken by an algorithm to run
+//2) Space Complexity: This is the amount of memory taken by an algorithm to run
+
+//------------Asymptotic notation---------------: 
+// This is a mathematical tool to represent time and space complexity. It includes:
+
+//1) BIG-O NOTATION (O-notation): This signifies the worst case complexities.
+//2) OMEGA NOTATION : This signifies the best case complexities.
+//3) THETA NOTATION : This signifies the Average case complexities.
+
+
+ 
 //FINACCI SEQUENCE
 
 //Question 1: Given a number "n", find the first "n" elements of the fibonacci sequence:
