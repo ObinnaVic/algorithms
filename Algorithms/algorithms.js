@@ -41,18 +41,60 @@ summation(5) // 10
 
 // 2) O(n) : This is the LINEAR TIME COMPLEXITY. This implies that as the Input size of the function increases, the time complexity also increases.
 
-//Big-O notation illustration:
 function sum(n) { //IF n = 4
   let num = 0; //------------------------1 
   for(let i=0; i<= n; i++) {
-    sum += i; //-------------------------4
+    num += i; //-------------------------4
   }
   return sum;//--------------------------1
 }
-
-//In the above code, n decides how many times the for loop runs, therefore 
-
 sum(4);/// In this instance, we will call the function passing in the input 4;
+
+//In the above code, n decides how many times the for loop runs, therefore there is a linear time complexity.
+
+
+// 3) O(n ^ i) : This is the QUADRATIC TIME COMPLEXITY. This represents algorithms that involves nested loops. "i" stansd for number of nested loops in the algorithm.
+//               That is, if we have a loop nesting another loop, we will have O(n^2), If we have 3 loops, we will have O(n^3) and so on.
+
+const quadraticNotation = (arr) => { //This piece of code can be referred to have a Quadratic Time Complexity (O(n^2)).
+    let swapped;
+    do { //First loop
+        swapped = false;
+        for (let i = 0; i < arr.length - 1; i++) { //Second loop
+        if (arr[i] > arr[i + 1]) {
+            let temp = arr[i + 1];
+            arr[i + 1] = arr[i];
+            arr[i] = temp;
+            swapped = true;
+        }   
+    }
+    } while (swapped);
+    return arr
+}
+
+console.log(bubbleSort([2, -3, 1, -8, 5, 7, 4, 9]));
+
+
+
+// 4) O(logn) : This is the LOGARITHMIC TIME COMPLEXITY. This occurs when the input size reduces by half in every iteration. 
+//              This is clearly illustrated below at "merge sort" and "binary search" algorithm which are perfect examples of the logarithmic time complexity.
+
+
+// SPACE COMPLEXITY (Similar to time complexity)
+// O(1) --- Constant
+// O(n) --- Linear
+// O(logn) --- logarithmic
+
+//OBJECTS-BIG-O-NOTATION
+//---Insert a value in an Object---O(1)CONSTANT
+//---Remove a value from an Object---O(1)CONSTANT
+//---Access a value give a key---O(1)CONSTANT
+//---Search a value---O(n)LINEAR
+//---Object.keys---O(n)LINEAR
+//---Object.values---O(n)LINEAR
+//---Object.entries---O(n)LINEAR
+
+//ARRAY-BIG-O-NOTATION
 
  
 //FINACCI SEQUENCE
