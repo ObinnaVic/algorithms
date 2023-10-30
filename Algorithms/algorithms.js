@@ -22,21 +22,17 @@
 // 2) OMEGA NOTATION : This signifies the best case complexities.
 // 3) THETA NOTATION : This signifies the Average case complexities.
 
-function summation(n) {
-    return (n * (n - 1))/2
-}
-
 //Now lets look at Big-O notation in relation to Time complexity in Javascript.
   
 // 1) O(1) : This is the CONSTANT TIME COMPLEXITY. This means that irrespective of the input size, the code or algorithm runs only once. For instance;
 
 function summations(n) { //This is a function that gets the output of the addition of all numbers from 0 - n
 
-    return (n * (n - 1)) / 2 //------- O(1) This is a constant time complexity because the code runs once irrespective of the input value.
+    return (n * (n + 1)) / 2 //------- O(1) This is a constant time complexity because the code runs once irrespective of the input value.
 
 }
 
-summation(5) // 10
+console.log(summations(5)); // 15
 
 
 // 2) O(n) : This is the LINEAR TIME COMPLEXITY. This implies that as the Input size of the function increases, the time complexity also increases.
@@ -61,18 +57,18 @@ const quadraticNotation = (arr) => { //This piece of code can be referred to hav
     do { //First loop
         swapped = false;
         for (let i = 0; i < arr.length - 1; i++) { //Second loop
-        if (arr[i] > arr[i + 1]) {
-            let temp = arr[i + 1];
-            arr[i + 1] = arr[i];
-            arr[i] = temp;
-            swapped = true;
-        }   
-    }
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i + 1];
+                arr[i + 1] = arr[i];
+                arr[i] = temp;
+                swapped = true;
+            }   
+        }
     } while (swapped);
     return arr
 }
 
-console.log(bubbleSort([2, -3, 1, -8, 5, 7, 4, 9]));
+console.log(quadraticNotation([2, -3, 1, -8, 5, 7, 4, 9]));
 
 
 
@@ -95,18 +91,32 @@ console.log(bubbleSort([2, -3, 1, -8, 5, 7, 4, 9]));
 //---Object.entries---O(n)LINEAR
 
 //ARRAY-BIG-O-NOTATION
+//---Insert and remove at the end---O(1)CONSTANT
+//---Insert and remove at the beginning---O(n)LINEAR: This is because the index of each item would have to be rearranged.
+//---Access an item from the array---O(1)CONSTANT
+//---Search for an item in the array---O(n)LINEAR: This is because you will have to make a loop over the array to get the value you are searching for.
+//---PUSH/POP---O(1)CONSTANT: Removing or adding to the back of the array doesnt change or alter its indexes.
+//---SHIFT/UNSHIFT/CONCAT/SLICE/SPLICE---O(n)LINEAR: Adding or removing from the front alters its indexes, so as concatenating, slicing and splicing.
+//---ForEach/map/filter/reduce---O(n)LINEAR: They all loop through the array.
+
+
 
  
-//FINACCI SEQUENCE
+//------------------------------------------------------Math Algorithms----------------------------------------
+
+//FINACCI SEQUENCE: This is an array of numbers where each number is the sum of the two preceding numbers.
+
+//Illustrations:
 
 //Question 1: Given a number "n", find the first "n" elements of the fibonacci sequence:
 
+//SOLUTION 1
 console.time("fib1");
 const fib = (n) => {
     let firstFibNum = [0, 1];
     let seq = [...firstFibNum];
 
-    while (seq.length < n) {
+    while (seq.length < n) { //--------O(n)--LINEAR
         let add = firstFibNum[0] + firstFibNum[1];
         seq.push(add);
         firstFibNum.shift();
@@ -115,15 +125,16 @@ const fib = (n) => {
 
     return seq;
 }
-console.timeEnd("fib1"); //0.01ms 
-
 console.log(fib(10));
 
-//solution 2
+console.timeEnd("fib1"); //0.01ms 
+
+
+//SOLUTION 2
 console.time("fib2");
 const fib2 = (n) => {
     let fibArr = [0, 1]; //---- O(1);
-    while (fibArr.length < n) fibArr.push(fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2]) //----- O(n);
+    while (fibArr.length < n) fibArr.push(fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2]) //----- O(n)--LINEAR;
 
     return fibArr; //----- O(1);
 }
