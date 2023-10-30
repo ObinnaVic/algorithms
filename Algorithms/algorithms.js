@@ -143,6 +143,17 @@ console.timeEnd("fib2"); //0.007ms
 
 console.log(fib2(10));
 
+//using recursion to solve fibonacci sequences
+const recursiveFib = (n) => {
+    if (n < 2) {
+        return n;
+    }
+
+    return recursiveFib(n - 1) + recursiveFib(n-2);
+}
+
+console.log(recursiveFib(6));
+
 
 //FACTORIAL OF A NUMBER
 //Question: Find the factorial of a given number "n";
@@ -155,7 +166,7 @@ const fact = (n) => {
 
 console.log(fact(10));
 
-//usig recursion to solve factorial
+//using recursion to solve factorial
 const fact2 = (n) => {
     if (n === 0) {
         return 1;
@@ -193,16 +204,7 @@ const PowerOfTwo = (n) => {
 
 console.log(PowerOfTwo(64));
 
-//using recursion to solve fibonacci sequences
-const recursiveFib = (n) => {
-    if (n < 2) {
-        return n;
-    }
 
-    return recursiveFib(n - 1) + recursiveFib(n-2);
-}
-
-console.log(recursiveFib(10));
 
 
 //SEARCH ALGORITHMS
@@ -223,7 +225,10 @@ const linSearch = (n, t) => {
 console.log(linSearch([1,2,3,4,5], 4));
 
 
-//BINARY SEARCH
+//BINARY SEARCH: Get the mid point of the array, Divide the array into two, the right side and the left side, using the mid point. if the number
+//we are searching for is less than the mid point, we search the left part of the divided array, else, we search the right part of the divided array.
+
+//Illustration:
 //QUESTION: Given an array of "n" elements and a value "t", find the index of "t" in the array if found and -1 if "t" 
 //is not found in the array.
 
@@ -293,7 +298,8 @@ const bubbleSort = (arr) => {
 console.log(bubbleSort([2, -3, 1, -8, 5, 7, 4, 9]));
 
 
-//INSERTION SORT 
+//INSERTION SORT : Split the array into two (The sorted part and the unsorted part). The first element in the array is always assumed to be the 
+//sorted part, and every other element apart from the first is assumed to be the unsorted part.
 
 const insertionSort = (arr) => {
     let newArr = [...arr];
