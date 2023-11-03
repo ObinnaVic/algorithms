@@ -1625,3 +1625,11 @@ console.log(graph.viewList());
 
 
 
+//JAVASCRIPT PROMISES: This is an object that will produce a single value sometime in the future. Just like a real life 
+//promises, it can be fulfilled and it can be unfulfilled (rejected). If it is fulfilled, it will produce a resolved
+//and if it is rejected, it will produe a reason why the promise failed.
+
+const promise = new Promise((resolve, reject) => {
+    //a conditional code that decides when the promise should return resolve or rejected.
+}); 
+
