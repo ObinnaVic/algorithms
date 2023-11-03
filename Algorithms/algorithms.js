@@ -1656,3 +1656,10 @@ const handleReject = (error) => {
 
 promiseTwo.then(handleResolve, handleReject);
 
+
+//Creating an immediate resolved and reject promises with callbacks
+
+Promise.resolve("Success").then((result) => console.log(result));
+
+Promise.reject("Failed").then(() => {}, (error) => console.error(error));
+
