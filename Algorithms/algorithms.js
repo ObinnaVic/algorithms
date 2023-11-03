@@ -1633,3 +1633,26 @@ const promise = new Promise((resolve, reject) => {
     //a conditional code that decides when the promise should return resolve or rejected.
 }); 
 
+//Adding a callback function to the promise using the .then() method.
+//.then takes two parameters, the first is the callback function that runs if the promise is resolved,
+//the second is a callback function that runs if the promise is rejected.
+
+const promiseTwo = new Promise((resolve, reject) => {
+  //a conditional code that decides when the promise should return resolve or rejected.
+  let num = Math.random();
+  if (num >= 0.5) {
+    resolve("success")
+  } 
+  reject("failed");
+})
+
+const handleResolve = (value) => {
+    console.log(value);
+}
+
+const handleReject = (error) => {
+    console.error(error);
+}
+
+promiseTwo.then(handleResolve, handleReject);
+
